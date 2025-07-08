@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate, useNavigate } from 'r
 import './App.css';
 
 // API base URL
-const API_BASE = 'http://192.168.66.219:4000/api';
+const API_BASE = import.meta.env.VITE_API_BASE;
 
 // Custom hook for API calls with automatic token refresh
 function useApi() {

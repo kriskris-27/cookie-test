@@ -4,11 +4,11 @@ const cookieParser = require('cookie-parser');
 const cors = require('cors');
 
 const app = express();
-const PORT = 4000;
+const PORT = process.env.PORT || 4000;
 
 // In production, use environment variables
-const ACCESS_TOKEN_SECRET = 'access-secret-key';
-const REFRESH_TOKEN_SECRET = 'refresh-secret-key';
+const ACCESS_TOKEN_SECRET = process.env.ACCESS_TOKEN_SECRET || 'access-secret-key';
+const REFRESH_TOKEN_SECRET = process.env.REFRESH_TOKEN_SECRET || 'refresh-secret-key';
 
 // Mock database for refresh tokens (in production, use real database)
 const refreshTokens = new Map();
@@ -28,7 +28,7 @@ const modules = [
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors({
-  origin: 'http://localhost:5173',
+  origin: process.env.CORS_ORIGIN || 'http://localhost:5173',
   credentials: true,
 }));
 
