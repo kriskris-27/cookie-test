@@ -69,14 +69,14 @@ app.post('/api/login', (req, res) => {
   const accessToken = jwt.sign(
     { userId: user.id, email: user.email, name: user.name },
     ACCESS_TOKEN_SECRET,
-    { expiresIn: '1m' }
+    { expiresIn: '5m' }
   );
 
   // Create refresh token (long-lived: 7 days)
   const refreshToken = jwt.sign(
     { userId: user.id },
     REFRESH_TOKEN_SECRET,
-    { expiresIn: '5m' }
+    { expiresIn: '10m' }
   );
 
   // Store refresh token in "database"
